@@ -35,6 +35,7 @@
         background-image: url(./images/Bg.jpg);
         background-repeat: no-repeat;
         background-position: center;
+        background-attachment: fixed;
     }
     .item-image {
         width: 100px; /* Adjust the width as needed */
@@ -170,6 +171,23 @@
     </div>
   </section>
 
+    <!-- jQery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.js"></script>
+    <!-- owl slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <!-- isotope js -->
+    <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+    <!-- nice select -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+
   <!-- Bootstrap JS and Dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -198,7 +216,7 @@
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2">
-                <img src="${item.image}" alt="${item.name}" class="item-image img-fluid rounded-3">
+                <img src="./images/${item.name}.jpg" alt="${item.name}" class="item-image img-fluid rounded-3">
               </div>
               <div class="col-md-3">
                 <p class="lead fw-normal mb-2">${item.name}</p>

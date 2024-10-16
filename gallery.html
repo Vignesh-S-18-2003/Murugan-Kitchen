@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+    <main>
+        
+        <ul class='slider'>
+          <li class='item' style="background-image: url('./images/Gulab\ jamun.avif')">
+            <div class='content'>
+              <h2 class='title'>"Lossless Youths"</h2>
+              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore fuga voluptatum.</p>
+              <button>Order Online</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('./images/chicken\ 65.jpg')">
+            <div class='content'>
+              <h2 class='title'>"Estrange Bond"</h2>
+              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore fuga voluptatum.</p>
+              <button>Order Online</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('./images/chicken\ biriyani.avif')">
+            <div class='content'>
+              <h2 class='title'>"The Gate Keeper"</h2>
+              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore fuga voluptatum.</p>
+              <button>Order Online</button>
+            </div>
+          </li>
+        </ul>
+      
+        <nav class='nav'>
+          <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
+          <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
+        </nav>
+      </main>
+      
+      <script>const slider = document.querySelector('.slider');
+
+        function activate(e) {
+          const items = document.querySelectorAll('.item');
+          e.target.matches('.next') && slider.append(items[0])
+          e.target.matches('.prev') && slider.prepend(items[items.length-1]);
+        }
+        
+        document.addEventListener('click',activate,false);</script>
+
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
