@@ -1053,7 +1053,7 @@ input:checked + div {
 .body {
   font: 90% / 1.5 Arial;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .body h1,h2{
