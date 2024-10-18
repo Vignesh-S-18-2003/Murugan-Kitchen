@@ -357,8 +357,8 @@ a:focus {
   background-color: #ffbe33;
   color: #ffffff;
   border-radius: 45px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   border: none;
   margin-top: 10px;
 }
