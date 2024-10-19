@@ -615,7 +615,7 @@ a:focus {
 }
 
 .about_section {
-  background: #222831;
+  background: #ffffff;
   color: #ffffff;
 }
 
@@ -1003,5 +1003,9 @@ a:focus {
 
 .footer_section .footer-info p a {
   color: inherit;
+}
+.gallery section{
+  flex: auto;
+  
 }
 /*# sourceMappingURL=style.css.map */
