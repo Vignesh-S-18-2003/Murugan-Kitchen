@@ -1006,6 +1006,7 @@ a:focus {
 }
 .gallery section{
   flex: auto;
+  background-color:#ffffff;
   
 }
 /*# sourceMappingURL=style.css.map */
