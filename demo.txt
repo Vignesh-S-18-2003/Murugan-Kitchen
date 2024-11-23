@@ -64,3 +64,202 @@
       </div>
     </div>
   </section>
+
+
+
+
+
+
+  MENU
+
+
+
+  <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Chicken Biriyani.jpg" alt="Chicken Biryani">
+              </div>
+              <div class="detail-box">
+                <h5>Chicken Biryani <span class="price"> &nbsp; &nbsp; &nbsp;  $15.99</span> </h5> 
+                <p>Tender chicken pieces marinated in spices, layered with saffron-infused rice, caramelized onions, and herbs for a rich, fragrant experience.</p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Egg Biriyani.jpg" alt="Egg Biriyani">
+              </div>
+              <div class="detail-box">
+                <h5>Egg Biriyani   <span class="price"> &nbsp; &nbsp; &nbsp;  $14.50</span> </h5>
+                <p>Aromatic basmati rice layered with boiled eggs, sautéed onions, and a blend of fragrant spices, delivering a savory and satisfying flavor.</p>
+               
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Mutton Thokku Biriyani.jpg" alt="Mutton Thokku Biriyani">
+              </div>
+              <div class="detail-box">
+                <h5>Mutton Thokku Biryani   <span class="price"> &nbsp;  $18.50</span> </h5>
+                <p>Slow-cooked mutton thokku mixed with biryani rice, rich with spices and intense flavor, perfect for meat lovers.</p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Chicken 65 Biriyani.jpg" alt="Chicken 65 Biriyani">
+              </div>
+              <div class="detail-box">
+                <h5>Chicken 65 Biryani   <span class="price"> &nbsp; &nbsp; &nbsp;  $16.99</span> </h5>
+                <p>Crispy chicken 65 tossed with biryani rice, creating a fusion of spicy, tangy flavors with fragrant basmati and bold masala.</p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Chilli Chicken Biriyani.jpg" alt="Chilli Chicken Biriyani">
+              </div>
+              <div class="detail-box">
+                <h5>Chilli Chicken Biriyani    <span class="price"> &nbsp; &nbsp; &nbsp;  $16.99</span> </h5>
+                <p> Combines the flavors of Indo-Chinese chilli chicken with traditional biryani rice, giving it a spicy and tangy kick.</p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Pepper Chicken Biriyani.jpg" alt="Pepper Chicken Biriyani">
+              </div>
+              <div class="detail-box">
+                <h5>Pepper Chicken Biriyani    <span class="price"> &nbsp;  $16.99</span> </h5>
+                <p> A unique biryani with pepper-marinated chicken, packed with fiery spice, earthy black pepper, and aromatic rice for a hearty taste.</p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Chicken fried rice.jpg" alt="Chicken Fried Rice">
+              </div>
+              <div class="detail-box">
+                <h5>Chicken Fried rice   <span class="price"> &nbsp; &nbsp; &nbsp;  $14.99</span> </h5>
+                <p>Stir-fried rice with tender chicken pieces, mixed vegetables, and soy sauce, delivering a deliciously balanced, savory meal.                  </p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Egg Fried Rice.jpg" alt="Egg Fried Rice">
+              </div>
+              <div class="detail-box">
+                <h5>Egg Fried rice  <span class="price"> &nbsp; &nbsp; &nbsp;  $13.99</span> </h5>
+                <p> Fluffy rice stir-fried with scrambled eggs, veggies, and a touch of soy, creating a light, protein-packed dish.                  </p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Chicken Kothu parotta.avif" alt="Chicken Kothu Parotta">
+              </div>
+              <div class="detail-box">
+                <h5>Chicken Kothu Parotta   <span class="price"> &nbsp;  $15.99</span> </h5>
+                <p>Shredded parotta mixed with spiced chicken, onions, and curry leaves, stir-fried to a flavorful, hearty meal.                  </p>
+                
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Egg-Kothu-Paratha.webp" alt="Egg Kothu Parotta">
+              </div>
+              <div class="detail-box">
+                <h5>Egg Kothu Parotta   <span class="price"> &nbsp; &nbsp; &nbsp;  $14.99</span> </h5>
+                <p>Shredded parotta stir-fried with scrambled eggs, spices, and vegetables, creating a tasty, filling dish.                  </p>
+                
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-sm-6 col-lg-4 all nonveg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Chicken Manchurian.jpg" alt="Chicken Manchurian">
+              </div>
+              <div class="detail-box">
+                <h5>Chicken Manchurian   <span class="price"> &nbsp; &nbsp; &nbsp;  $15.99</span> </h5>
+                <p>Crispy fried chicken tossed in a tangy, spicy Indo-Chinese sauce with onions and bell peppers, perfect as a savory appetizer or main.                  </p>
+                
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          VEG Fried rice
+
+
+          <div class="col-sm-6 col-lg-4 all veg-biryani">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/Veg Fried Rice.jpg" alt="Veg Fried Rice">
+              </div>
+              <div class="detail-box">
+                <h5>Veg Fried Rice   <span class="price"> &nbsp; &nbsp; &nbsp;  $12.99</span> </h5>
+                <p>Fluffy rice stir-fried with fresh vegetables like carrots, bell peppers, and peas, seasoned with light soy sauce for a balanced flavor. It’s colorful, aromatic, and perfect as a light, flavorful vegetarian dish.</p>
+              </div>
+            </div>
+          </div>
+
+          
+          
+
+          
