@@ -362,8 +362,8 @@ a:focus {
   background-color: #ffbe33;
   color: #ffffff;
   border-radius: 45px;
-  -webkit-transition: all 2s;
-  transition: all 2s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
   border: none;
   margin-top: 10px;
 }
