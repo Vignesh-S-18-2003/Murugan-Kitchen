@@ -153,10 +153,13 @@ a:focus {
 
 .navbar-brand span {
   font-weight: bold;
-  font-size: 32px;
+  font-size: 25px;
   color: #ffffff;
 }
-
+#navbarSupportedContent ul li a{
+  font-size: 12px;
+  font-weight: bold;
+}
 .custom_nav-container {
   padding: 0;
 }
@@ -202,6 +205,8 @@ a:focus {
 }
 
 .user_option a {
+  font-size: 11px;
+  font-weight: bold;
   margin: 0 10px;
 }
 
