@@ -1014,4 +1014,18 @@ a:focus {
   background-color:#ffffff;
   
 }
+
+.center-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.centered-img {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */
