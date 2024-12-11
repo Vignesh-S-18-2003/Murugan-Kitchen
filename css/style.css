@@ -1027,47 +1027,32 @@ a:focus {
   height: auto;
   margin-bottom: 20px;
 }
-
 .menu_section {
-  padding: 50px 0;
-  background-color: #424249;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #000000;
 }
-
-.heading_container h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
-  color: #fffefe;
-}
-
 .menu-category {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
-
-.menu-category h3 {
-  font-size: 1.5rem;
-  color: #ffd53f;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
+.menu-items {
+  display: flex;
+  align-items: flex-start;
 }
-
-.menu-category ul {
+.menu-items ul {
+  flex: 1;
   list-style: none;
   padding: 0;
-  margin: 0;
 }
-
-.menu-category ul li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  color: #fbf7f7;
+.menu-items ul li {
+  margin: 8px 0;
+  font-size: 16px;
 }
-
-.menu-category ul li span {
-  font-weight: bold;
-  color: #fdfafa;
+.menu-image {
+  width: 150px;
+  height: auto;
+  margin-left: 20px;
+  border-radius: 10px;
 }
 
 
