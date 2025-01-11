@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .quantity-btn {
+      background-color: #ff9800;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 5px 10px;
+      margin: 0 5px;
+    }
+    .quantity-btn:hover {
+      background-color: #e65100;
+    }
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .remove-btn:hover {
+      background-color: #d32f2f;
+    }
+    .total-price {
+      text-align: right;
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+    .checkout-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Shopping Cart</h1>
+
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cartBody">
+        <!-- Cart items will be inserted here -->
+      </tbody>
+    </table>
+
+    <div class="total-price">
+      Total: $<span id="totalAmount">0.00</span>
+    </div>
+
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+
+  <script>
+    function loadCart() {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const cartBody = document.getElementById('cartBody');
+      const totalAmount = document.getElementById('totalAmount');
+      cartBody.innerHTML = ''; // Clear the table body
+
+      let total = 0;
+
+      cartItems.forEach((item, index) => {
+        const row = document.createElement('tr');
+
+        const itemCell = document.createElement('td');
+        itemCell.textContent = item.name;
+        row.appendChild(itemCell);
+
+        const priceCell = document.createElement('td');
+        priceCell.textContent = `$${item.price.toFixed(2)}`;
+        row.appendChild(priceCell);
+
+        const quantityCell = document.createElement('td');
+        const decreaseButton = document.createElement('button');
+        decreaseButton.classList.add('quantity-btn');
+        decreaseButton.textContent = '-';
+        decreaseButton.onclick = () => updateQuantity(index, -1);
+        
+        const quantity = document.createElement('span');
+        quantity.textContent = item.quantity;
+        quantityCell.appendChild(decreaseButton);
+        quantityCell.appendChild(quantity);
+
+        const increaseButton = document.createElement('button');
+        increaseButton.classList.add('quantity-btn');
+        increaseButton.textContent = '+';
+        increaseButton.onclick = () => updateQuantity(index, 1);
+        quantityCell.appendChild(increaseButton);
+
+        row.appendChild(quantityCell);
+
+        const totalCell = document.createElement('td');
+        totalCell.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+        row.appendChild(totalCell);
+
+        const actionCell = document.createElement('td');
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('remove-btn');
+        removeButton.textContent = 'Remove';
+        removeButton.onclick = () => removeItem(index);
+        actionCell.appendChild(removeButton);
+        row.appendChild(actionCell);
+
+        cartBody.appendChild(row);
+
+        total += item.price * item.quantity;
+      });
+
+      totalAmount.textContent = total.toFixed(2);
+    }
+
+    function updateQuantity(index, change) {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const item = cartItems[index];
+      
+      item.quantity += change;
+      
+      if (item.quantity <= 0) {
+        item.quantity = 1;
+      }
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      loadCart(); // Re-render the cart
+    }
+
+    function removeItem(index) {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      cartItems.splice(index, 1);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      loadCart(); // Re-render the cart
+    }
+
+    function checkout() {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      
+      if (cartItems.length === 0) {
+        alert("Your cart is empty! Add items to your cart to proceed.");
+        return;
+      }
+
+      let totalAmount = 0;
+      cartItems.forEach(item => {
+        totalAmount += item.price * item.quantity;
+      });
+
+      alert(`Proceeding to checkout. Your total is $${totalAmount.toFixed(2)}.`);
+      // You can redirect the user to a payment page or API call here
+      // For now, we'll clear the cart and show a confirmation message
+      localStorage.setItem('cartTotal',totalAmount);
+    //   localStorage.removeItem('cartItems');
+      loadCart();
+    }
+
+    document.getElementById('checkoutBtn').addEventListener('click', checkout);
+
+    // Initial load of the cart
+    loadCart();
+  </script>
+  
+</body>
+</html>
