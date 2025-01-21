@@ -96,10 +96,144 @@
     .checkout-btn:hover {
       background-color: #45a049;
     }
+    .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .popup-content form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popup-content form label {
+    margin-top: 10px;
+  }
+
+  .popup-content form input,
+  .popup-content form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .close-popup {
+    margin-top: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .close-popup:hover {
+    background: darkred;
+  }
   </style>
+    <style>
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+      }
+    
+      .popup-content form {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .popup-content form label {
+        margin-top: 10px;
+      }
+    
+      .popup-content form input,
+      .popup-content form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+    
+      .close-popup {
+        margin-top: 10px;
+        background: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    
+      .close-popup:hover {
+        background: darkred;
+      }
+      .btn-sm{
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 4px;
+      }
+    </style>
 </head>
 <body class="sub_page">
+  <div id="checkoutPopup" class="popup">
+    <div class="popup-content">
+      <h2>Checkout</h2>
+      <form id="checkoutForm">
+        <label for="customerName">Name:</label>
+        <input type="text" id="customerName" name="customerName" required>
+  
+        <label for="customerAddress">Address:</label>
+        <textarea id="customerAddress" name="customerAddress" required></textarea>
+  
+        <label for="customerEmail">Email:</label>
+        <input type="email" id="customerEmail" name="customerEmail" required>
+  
+        <label for="customerPhone">Phone Number:</label>
+        <input type="tel" id="customerPhone" name="customerPhone" required>
+  
+        <button type="submit" id="confirmOrderBtn" class="btn btn-primary checkout-btn">Confirm Order</button>
+      </form>
+      <button id="closePopupBtn" class="close-popup checkout-btn">Close</button>
+    </div>
+  </div>
+  
 
+  
   <div class="hero_area">
     <div class="bg-box">
       <img src="images/Bg.jpg" alt="">
@@ -143,7 +277,7 @@
                 <a class="nav-link" href="contactus.html">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link mt30" href="cart.html" style="font-size: 24px; padding-bottom: 20px;"><i class="fa fa-shopping-cart"></i></a>
+                <a class="nav-link mt30" href="cart.html" style="font-size: 20px; padding-bottom: 20px;"><i class="fa fa-shopping-cart"></i></a>
               </li>
               
             </ul>
@@ -154,32 +288,158 @@
     <!-- end header section -->
   </div>
 
-  <div class="container">
-    <h1>Shopping Cart</h1>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Shopping Cart</h1>
 
-    <table id="cartTable">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="cartBody">
-        <!-- Cart items will be inserted here -->
-      </tbody>
-    </table>
-
-    <div class="total-price">
-      Total: $<span id="totalAmount">0.00</span>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" id="cartTable">
+        <thead class="table-dark">
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cartBody">
+          <!-- Cart items will be inserted here -->
+        </tbody>
+      </table>
     </div>
 
-    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="total-price">
+          Total: $<span id="totalAmount">0.00</span>
+        </div>
+      </div>
+      <div class="col-md-6 text-end">
+        <button class="btn btn-primary checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+      </div>
+    </div>
   </div>
 
   <script>
+    function openPopup() {
+  document.getElementById('checkoutPopup').style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('checkoutPopup').style.display = 'none';
+}
+
+function sendEmailWithOrderDetails(orderTotal, orderDetails, customerDetails) {
+  emailjs.init("aBpQc8OCMIz7ZxUTd"); // Replace with your EmailJS public key
+
+  emailjs.send("service_x3qalza", "template_bz3ki4n", {
+    to_email: "vigneshsm2003@gmail.com",
+    order_total:orderTotal,
+    order_details: orderDetails,
+    customer_name: customerDetails.name,
+    customer_address: customerDetails.address,
+    customer_email: customerDetails.email,
+    customer_phone: customerDetails.phone,
+  }).then(response => {
+    alert("Order placed successfully!");
+    localStorage.removeItem("cartItems");
+    localStorage.setItem("orders", JSON.stringify(customerDetails)); // Store order details
+    closePopup();
+    loadCart();
+  }).catch(error => {
+    console.error("Error sending email:", error);
+    alert("Error placing order. Please try again.");
+  });
+}
+
+document.getElementById('checkoutBtn').addEventListener('click', openPopup);
+document.getElementById('closePopupBtn').addEventListener('click', closePopup);
+
+document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const customerName = document.getElementById('customerName').value;
+  const customerAddress = document.getElementById('customerAddress').value;
+  const customerEmail = document.getElementById('customerEmail').value;
+  const customerPhone = document.getElementById('customerPhone').value;
+
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  if (cartItems.length === 0) {
+    alert("Your cart is empty! Add items to your cart to proceed.");
+    return;
+  }
+
+  const orderDetails = cartItems.map(item => `${item.name}: ${item.quantity}`).join("\n");
+  const orderTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const customerDetails = {
+    name: customerName,
+    address: customerAddress,
+    email: customerEmail,
+    phone: customerPhone,
+    orderItems: cartItems,
+  };
+
+  // Send email and store order details
+  sendEmailWithOrderDetails(orderTotal, orderDetails, customerDetails);
+});
+
+    // function loadCart() {
+    //   const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    //   const cartBody = document.getElementById('cartBody');
+    //   const totalAmount = document.getElementById('totalAmount');
+    //   cartBody.innerHTML = ''; 
+
+    //   let total = 0;
+
+    //   cartItems.forEach((item, index) => {
+    //     const row = document.createElement('tr');
+
+    //     const itemCell = document.createElement('td');
+    //     itemCell.textContent = item.name;
+    //     row.appendChild(itemCell);
+
+    //     const priceCell = document.createElement('td');
+    //     priceCell.textContent = `$${item.price.toFixed(2)}`;
+    //     row.appendChild(priceCell);
+
+    //     const quantityCell = document.createElement('td');
+    //     const decreaseButton = document.createElement('button');
+    //     decreaseButton.classList.add('quantity-btn');
+    //     decreaseButton.textContent = '-';
+    //     decreaseButton.onclick = () => updateQuantity(index, -1);
+        
+    //     const quantity = document.createElement('span');
+    //     quantity.textContent = item.quantity;
+    //     quantityCell.appendChild(decreaseButton);
+    //     quantityCell.appendChild(quantity);
+
+    //     const increaseButton = document.createElement('button');
+    //     increaseButton.classList.add('quantity-btn');
+    //     increaseButton.textContent = '+';
+    //     increaseButton.onclick = () => updateQuantity(index, 1);
+    //     quantityCell.appendChild(increaseButton);
+
+    //     row.appendChild(quantityCell);
+
+    //     const totalCell = document.createElement('td');
+    //     totalCell.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+    //     row.appendChild(totalCell);
+
+    //     const actionCell = document.createElement('td');
+    //     const removeButton = document.createElement('button');
+    //     removeButton.classList.add('remove-btn');
+    //     removeButton.textContent = 'Remove';
+    //     removeButton.onclick = () => removeItem(index);
+    //     actionCell.appendChild(removeButton);
+    //     row.appendChild(actionCell);
+
+    //     cartBody.appendChild(row);
+
+    //     total += item.price * item.quantity;
+    //   });
+
+    //   totalAmount.textContent = total.toFixed(2);
+    // }
     function loadCart() {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       const cartBody = document.getElementById('cartBody');
@@ -201,17 +461,17 @@
 
         const quantityCell = document.createElement('td');
         const decreaseButton = document.createElement('button');
-        decreaseButton.classList.add('quantity-btn');
+        decreaseButton.classList.add('btn', 'btn-sm', 'btn-outline-danger', 'me-1');
         decreaseButton.textContent = '-';
         decreaseButton.onclick = () => updateQuantity(index, -1);
-        
+
         const quantity = document.createElement('span');
         quantity.textContent = item.quantity;
         quantityCell.appendChild(decreaseButton);
         quantityCell.appendChild(quantity);
 
         const increaseButton = document.createElement('button');
-        increaseButton.classList.add('quantity-btn');
+        increaseButton.classList.add('btn', 'btn-sm', 'btn-outline-success', 'ms-1');
         increaseButton.textContent = '+';
         increaseButton.onclick = () => updateQuantity(index, 1);
         quantityCell.appendChild(increaseButton);
@@ -224,7 +484,7 @@
 
         const actionCell = document.createElement('td');
         const removeButton = document.createElement('button');
-        removeButton.classList.add('remove-btn');
+        removeButton.classList.add('btn', 'btn-sm', 'btn-danger');
         removeButton.textContent = 'Remove';
         removeButton.onclick = () => removeItem(index);
         actionCell.appendChild(removeButton);
@@ -237,6 +497,12 @@
 
       totalAmount.textContent = total.toFixed(2);
     }
+
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+      alert("Proceeding to checkout...");
+      // Additional checkout logic here
+    });
+
 
     function updateQuantity(index, change) {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -272,31 +538,31 @@
         totalAmount += item.price * item.quantity;
       });
 
-      alert(`Proceeding to checkout. Your total is $${totalAmount.toFixed(2)}.`);
+      // alert(`Proceeding to checkout. Your total is $${totalAmount.toFixed(2)}.`);
       // You can redirect the user to a payment page or API call here
       // For now, we'll clear the cart and show a confirmation message
-      localStorage.setItem('cartTotal',totalAmount);
+      // localStorage.setItem('cartTotal',totalAmount);
     //   localStorage.removeItem('cartItems');
-    if (cartItems.length === 0) {
-            alert("Cart is empty!");
-            return;
-        }
+    // if (cartItems.length === 0) {
+    //         alert("Cart is empty!");
+    //         return;
+    //     }
 
-        let orderDetails = cartItems.map(item => `${item.name}: ${item.quantity}`).join("\n");
+    //     let orderDetails = cartItems.map(item => `${item.name}: ${item.quantity}`).join("\n");
 
-        emailjs.init("aBpQc8OCMIz7ZxUTd"); // Replace with your EmailJS public key
+    //     emailjs.init("aBpQc8OCMIz7ZxUTd"); // Replace with your EmailJS public key
 
-        emailjs.send("service_x3qalza", "template_bz3ki4n", {
-            to_email: "vigneshsm2003@gmail.com",
-            order_details: orderDetails
-        }).then(response => {
-            alert("Order placed successfully!");
-            localStorage.removeItem("cartItems");
-            updateCartDisplay();
-        }).catch(error => {
-            console.error("Error sending email:", error);
-            alert("Error placing order. Please try again.");
-        });
+    //     emailjs.send("service_x3qalza", "template_bz3ki4n", {
+    //         to_email: "vigneshsm2003@gmail.com",
+    //         order_details: orderDetails
+    //     }).then(response => {
+    //         alert("Order placed successfully!");
+    //         localStorage.removeItem("cartItems");
+    //         updateCartDisplay();
+    //     }).catch(error => {
+    //         console.error("Error sending email:", error);
+    //         alert("Error placing order. Please try again.");
+    //     });
 
       loadCart();
     }
