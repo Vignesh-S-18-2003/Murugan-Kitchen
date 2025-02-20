@@ -1062,5 +1062,19 @@ a:focus {
         .menu-image-below {
           margin-top: 20px;
         }
-
+        .food_section .detail-box p {
+          font-family: 'Lora', serif;  /* Elegant and readable */
+          font-size: 1rem;  /* Adjust for readability */
+          font-weight: 400;  /* Medium weight for better contrast */
+          color: #faf8f7;  /* Light color for readability */
+          text-align: left;
+          line-height: 1.6;  /* Improves readability */
+          letter-spacing: 0.5px;
+          background: linear-gradient(to right, #212529, #212529); /* Dark gradient effect */
+          padding: 8px;
+          border-radius: 8px;
+          box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      
 /*# sourceMappingURL=style.css.map */
