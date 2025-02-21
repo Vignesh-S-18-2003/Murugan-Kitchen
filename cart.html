@@ -49,7 +49,7 @@
       border: 1px solid #ddd;
     }
     th {
-      background-color: #ffbe33;
+      background-color: #4CAF50;
       color: white;
     }
     .quantity-btn {
@@ -84,7 +84,7 @@
       display: block;
       width: 100%;
       padding: 15px;
-      background-color: #ffbe33;
+      background-color: #4CAF50;
       color: white;
       text-align: center;
       font-size: 18px;
@@ -94,7 +94,7 @@
       transition: background-color 0.3s;
     }
     .checkout-btn:hover {
-      background-color: #ffbe33;
+      background-color: #45a049;
     }
     .popup {
     display: none;
@@ -207,6 +207,16 @@
         margin-right: 5px;
         padding: 4px;
       }
+      dialog {
+      border: none;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
     </style>
 </head>
 <body class="sub_page">
@@ -217,8 +227,8 @@
         <label for="customerName">Name:</label>
         <input type="text" id="customerName" name="customerName" required>
   
-        <label for="customerAddress">Address:</label>
-        <textarea id="customerAddress" name="customerAddress" required></textarea>
+        <!-- <label for="customerAddress">Address:</label>
+        <textarea id="customerAddress" name="customerAddress" required></textarea> -->
   
         <label for="customerEmail">Email:</label>
         <input type="email" id="customerEmail" name="customerEmail" required>
@@ -236,7 +246,7 @@
   
   <div class="hero_area">
     <div class="bg-box">
-      <img src="images/MuruganFoods_DarkTheme.jpg" alt="">
+      <img src="images/Bg.jpg" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -290,7 +300,7 @@
 
   <div class="container my-5">
     <h1 class="text-center mb-4">Shopping Cart</h1>
-
+    <p style="text-align: center;">Minimum "30" Minutes Required for preparing your Food</p>
     <div class="table-responsive">
       <table class="table table-bordered table-striped" id="cartTable">
         <thead class="table-dark">
@@ -319,7 +329,10 @@
       </div>
     </div>
   </div>
-
+  <dialog id="confirmationDialog">
+    <p>Minimum 30 minutes Required for Preparation of food</p>
+    <button id="closeDialogBtn" class="btn btn-secondary">OK</button>
+  </dialog>
   <script>
     function openPopup() {
   document.getElementById('checkoutPopup').style.display = 'flex';
@@ -337,7 +350,7 @@ function sendEmailWithOrderDetails(orderTotal, orderDetails, customerDetails) {
     order_total:orderTotal,
     order_details: orderDetails,
     customer_name: customerDetails.name,
-    customer_address: customerDetails.address,
+    // customer_address: customerDetails.address,
     customer_email: customerDetails.email,
     customer_phone: customerDetails.phone,
   }).then(response => {
@@ -359,7 +372,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function (e) 
   e.preventDefault();
 
   const customerName = document.getElementById('customerName').value;
-  const customerAddress = document.getElementById('customerAddress').value;
+  // const customerAddress = document.getElementById('customerAddress').value;
   const customerEmail = document.getElementById('customerEmail').value;
   const customerPhone = document.getElementById('customerPhone').value;
 
@@ -373,7 +386,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function (e) 
   const orderTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   const customerDetails = {
     name: customerName,
-    address: customerAddress,
+    // address: customerAddress,
     email: customerEmail,
     phone: customerPhone,
     orderItems: cartItems,
@@ -498,12 +511,6 @@ document.getElementById('checkoutForm').addEventListener('submit', function (e) 
       totalAmount.textContent = total.toFixed(2);
     }
 
-    document.getElementById('checkoutBtn').addEventListener('click', () => {
-      alert("Proceeding to checkout...");
-      // Additional checkout logic here
-    });
-
-
     function updateQuantity(index, change) {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       const item = cartItems[index];
@@ -538,36 +545,22 @@ document.getElementById('checkoutForm').addEventListener('submit', function (e) 
         totalAmount += item.price * item.quantity;
       });
 
-      // alert(`Proceeding to checkout. Your total is $${totalAmount.toFixed(2)}.`);
-      // You can redirect the user to a payment page or API call here
-      // For now, we'll clear the cart and show a confirmation message
-      // localStorage.setItem('cartTotal',totalAmount);
-    //   localStorage.removeItem('cartItems');
-    // if (cartItems.length === 0) {
-    //         alert("Cart is empty!");
-    //         return;
-    //     }
+      // Display the confirmation dialog
+      const confirmationDialog = document.getElementById('confirmationDialog');
+      confirmationDialog.showModal();
 
-    //     let orderDetails = cartItems.map(item => `${item.name}: ${item.quantity}`).join("\n");
-
-    //     emailjs.init("aBpQc8OCMIz7ZxUTd"); // Replace with your EmailJS public key
-
-    //     emailjs.send("service_x3qalza", "template_bz3ki4n", {
-    //         to_email: "vigneshsm2003@gmail.com",
-    //         order_details: orderDetails
-    //     }).then(response => {
-    //         alert("Order placed successfully!");
-    //         localStorage.removeItem("cartItems");
-    //         updateCartDisplay();
-    //     }).catch(error => {
-    //         console.error("Error sending email:", error);
-    //         alert("Error placing order. Please try again.");
-    //     });
-
-      loadCart();
+      // Optional: Clear the cart after showing the confirmation
+      // localStorage.removeItem('cartItems');
+      // loadCart(); // Re-render the cart
     }
 
     document.getElementById('checkoutBtn').addEventListener('click', checkout);
+
+    // Close the dialog when the "OK" button is clicked
+    document.getElementById('closeDialogBtn').addEventListener('click', () => {
+      const confirmationDialog = document.getElementById('confirmationDialog');
+      confirmationDialog.close();
+    });
 
     // Initial load of the cart
     loadCart();
