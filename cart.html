@@ -345,9 +345,11 @@ function closePopup() {
 }
 
 function sendEmailWithOrderDetails(orderTotal, orderDetails, customerDetails) {
-  emailjs.init("aBpQc8OCMIz7ZxUTd"); // Replace with your EmailJS public key
+  emailjs.init("-uK0UY1618ovpTk5a"); // Replace with your EmailJS public key
 
-  emailjs.send("service_x3qalza", "template_bz3ki4n", {
+  
+  // emailjs.send("service_x3qalza", "template_bz3ki4n", {
+    emailjs.send("service_xb9cqsb", "template_vnbfebf", {
     to_email: "vigneshsm2003@gmail.com",
     order_total:orderTotal,
     order_details: orderDetails,
